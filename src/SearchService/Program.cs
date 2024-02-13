@@ -19,16 +19,19 @@ builder.Services.AddHttpClient<AuctionSvcHttpClient>()
 builder.Services.AddMassTransit(x =>
 {
   x.AddConsumersFromNamespaceContaining<AuctionCreatedConsumer>();
- 
+  x.AddConsumersFromNamespaceContaining<AuctionDeletedConsumer>();
+  x.AddConsumersFromNamespaceContaining<AuctionUpdatedConsumer>();
+  
   x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("search", false));
 
   x.UsingRabbitMq((context, cfg) =>
   {
-    cfg.ReceiveEndpoint("search-auction-created", e => {     
-     e.UseMessageRetry(r => r.Interval(5,5));     
-     e.ConfigureConsumer<AuctionCreatedConsumer>(context);
+    cfg.ReceiveEndpoint("search-auction-created", e =>
+    {
+      e.UseMessageRetry(r => r.Interval(5, 5));
+      e.ConfigureConsumer<AuctionCreatedConsumer>(context);
     });
-    
+
     cfg.ConfigureEndpoints(context);
   });
 });
