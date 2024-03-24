@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 namespace IdentityService;
+//test new key github
 
 public class SeedData
 {
