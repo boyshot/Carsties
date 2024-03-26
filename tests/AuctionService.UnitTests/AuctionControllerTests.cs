@@ -186,7 +186,11 @@ public class AuctionControllerTests
     public async Task DeleteAuction_WithValidUser_ReturnsOkResponse()
     {
         // arrange
-        var auction = new Auction() { Id = Guid.NewGuid(), Seller = "test", Item = new Item() };
+        //var auction = new Auction() { Id = Guid.NewGuid(), Seller = "test", Item = new Item() };
+
+        var auction = _fixture.Build<Auction>().Without(x => x.Item).Create();
+        auction.Seller = "test";
+        var item = _fixture.Build<Item>().Without(x => x.Auction).Create();
 
         _auctionRepo.Setup(repo => repo.GetAuctionEntityById(It.IsAny<Guid>()))
          .ReturnsAsync(auction);
