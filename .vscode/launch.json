@@ -11,34 +11,73 @@
       }
     },
     {
-      // Use IntelliSense to find out which attributes exist for C# debugging
-      // Use hover for the description of the existing attributes
-      // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md.
-      "name": ".NET Core Launch (web)",
+      "name": "AuctionService",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      // If you have changed target frameworks, make sure to update the program path.
       "program": "${workspaceFolder}/src/AuctionService/bin/Debug/net8.0/AuctionService.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/AuctionService",
       "stopAtEntry": false,
-      // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
-      "serverReadyAction": {
-        "action": "openExternally",
-        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-      },
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "sourceFileMap": {
-        "/Views": "${workspaceFolder}/Views"
+      }
+    },    
+    {
+      "name": "SearchService",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/SearchService/bin/Debug/net8.0/SearchService.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/SearchService",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    {
+      "name": "GatewayService",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/GatewayService/bin/Debug/net8.0/GatewayService.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/GatewayService",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    {
+      "name": "IdentityService",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/IdentityService/bin/Debug/net8.0/IdentityService.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/IdentityService",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     {
       "name": ".NET Core Attach",
       "type": "coreclr",
       "request": "attach"
+    }    
+  ],
+  "compounds": [
+    {
+        "name": "Start all Projects",
+        "configurations": [
+            "IdentityService",
+            "GatewayService",
+            "AuctionService",
+            "SearchService"
+        ],
+        "stopAll": true
     }
-  ]
+]
 }
