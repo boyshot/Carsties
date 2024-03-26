@@ -14,7 +14,6 @@ namespace AuctionService.Controllers;
 public class AuctionController : ControllerBase
 {
   private readonly IAuctionRepository _auctionRepository;
-  private readonly AuctionDbContext _context;
   private readonly IMapper _mapper;
   private readonly IPublishEndpoint _publishEndpoint;
 
@@ -49,7 +48,7 @@ public class AuctionController : ControllerBase
 
     auction.Seller = User.Identity.Name;
 
-    _context.Auctions.Add(auction);
+    _auctionRepository.AddAuction(auction);
 
     var newAuction = _mapper.Map<AuctionDto>(auction);
 
@@ -98,7 +97,7 @@ public class AuctionController : ControllerBase
 
     if (auction.Seller != User.Identity.Name) return Forbid();
 
-    _context.Auctions.Remove(auction);
+    _auctionRepository.RemoveAuction(auction);
 
     await _publishEndpoint.Publish(_mapper.Map<AuctionDeleted>(auction));
 
