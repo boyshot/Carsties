@@ -54,8 +54,8 @@ export default function Filters() {
     <div className='flex justify-between items-center mb-4'>
 
       <div>
-        <span className='uppercase text-sm text-gray-500 mr-2'>Filter by</span>
-        <Button.Group>
+        <div className="flex flex-wrap items-start2">
+        <span className='uppercase text-sm text-gray-500 mr-2 mt-3'>Filter by</span>
           {filterButtons.map(({ label, icon: Icon, value }) => (
             <Button
               key={value}
@@ -66,25 +66,23 @@ export default function Filters() {
               {label}
             </Button>
           ))}
-        </Button.Group>
+        </div>
       </div>
 
 
       <div>
-        <span className='uppercase text-sm text-gray-500 mr-2'>Order by</span>
-        <Button.Group>
-          {
-            orderButtons.map(({ label, icon: Icon, value }) => (
+      <div className="flex flex-wrap items-start">
+        <span className='uppercase text-sm text-gray-500 mr-2 mt-3'>Order by</span>
+          {orderButtons.map(({ label, icon: Icon, value }) => (
             <Button
               key={value}
               onClick={() => setParams({ orderBy: value })}
-              color={`${orderBy === value ? 'red' : 'gray'}`}
-            >
+              color={`${orderBy === value ? 'red' : 'gray'}`}>
               <Icon className='mr-3 h-4 w-4' />
               {label}
             </Button>
           ))}
-        </Button.Group>
+        </div>
       </div>
 
       <div>
