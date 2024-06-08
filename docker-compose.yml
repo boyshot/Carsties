@@ -76,3 +76,7 @@ services:
        - ASPNETCORE_URLS=http://+:80
      ports:
        - 6001:80
+     depends_on:
+       - auction-svc
+       - search-svc
+       - identity-svc
