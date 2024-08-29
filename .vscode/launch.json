@@ -63,6 +63,19 @@
       }
     },
     {
+      "name": "BiddingService",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/BiddingService/bin/Debug/net8.0/BiddingService.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/BiddingService",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    {
       "name": ".NET Core Attach",
       "type": "coreclr",
       "request": "attach"

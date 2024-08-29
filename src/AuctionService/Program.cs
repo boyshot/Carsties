@@ -28,6 +28,8 @@ builder.Services.AddMassTransit(x =>
   });
 
   x.AddConsumersFromNamespaceContaining<AuctionCreatedFaultConsumer>();
+  x.AddConsumersFromNamespaceContaining<BidPlacedConsumer>();
+  x.AddConsumersFromNamespaceContaining<AuctionFinishedConsumer>();
 
   x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("auction", false));
 
@@ -51,6 +53,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 });
 
 builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
+builder.Services.AddGrpc();
 
 var app = builder.Build();
 
@@ -58,6 +61,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGrpcService<GrpcAuctionService>();
 
 try
 {

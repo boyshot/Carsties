@@ -2,6 +2,7 @@ using System.Net;
 using MassTransit;
 using Polly;
 using Polly.Extensions.Http;
+using SearchService;
 using SearchService.Consumers;
 using SearchService.Data;
 using SearchService.Services;
@@ -21,6 +22,8 @@ builder.Services.AddMassTransit(x =>
   x.AddConsumersFromNamespaceContaining<AuctionCreatedConsumer>();
   x.AddConsumersFromNamespaceContaining<AuctionDeletedConsumer>();
   x.AddConsumersFromNamespaceContaining<AuctionUpdatedConsumer>();
+  x.AddConsumersFromNamespaceContaining<BidPlacedConsumer>();
+  x.AddConsumersFromNamespaceContaining<AuctionFinishedConsumer>();
   
   x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("search", false));
 

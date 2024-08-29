@@ -17,10 +17,10 @@ public class BidPlacedConsumer : IConsumer<BidPlaced>
   {
     Console.WriteLine("--> Consuming bid placed");
 
-    var auction = await _dbcontext.Auctions.FindAsync(context.Message.AuctionId);
+    var auction = await _dbcontext.Auctions.FindAsync(Guid.Parse(context.Message.AuctionId));
 
     if (!auction.CurrentHighBid.HasValue
-       || context.Message.BidStatus.Contains("accepted")
+       || context.Message.BidStatus.Contains("Accepted")
        && context.Message.Amount > auction.CurrentHighBid)
     {
       auction.CurrentHighBid = context.Message.Amount;
