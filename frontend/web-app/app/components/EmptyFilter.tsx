@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useParamsStore } from '../hooks/useParamsStore'
+import { useParamsStore } from '../../hooks/useParamsStore'
 import Heading from './Heading';
 import { Button } from 'flowbite-react';
 import { signIn } from 'next-auth/react';

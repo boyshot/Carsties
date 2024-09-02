@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { AiOutlineCar } from 'react-icons/ai'
-import { useParamsStore } from '../hooks/useParamsStore'
+import { useParamsStore } from '../../hooks/useParamsStore'
 import { usePathname, useRouter } from 'next/navigation'
 
 export default function Logo() {
