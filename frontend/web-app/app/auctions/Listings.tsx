@@ -15,7 +15,6 @@ import { useShallow } from 'zustand/react/shallow';
 
 export default function Listings() {
   const [loading, setLoading] = useState(true);
-
   const params = useParamsStore(useShallow(state => ({
     pageNumber: state.pageNumber,
     pageSize: state.pageSize,
@@ -34,8 +33,9 @@ export default function Listings() {
 
     })));
 
-  const setData = useAuctionStore(state => state.setData);
+  const setData = useAuctionStore(state => state.setData); 
   const setParams = useParamsStore(state => state.setParams);
+ 
   const url = qs.stringifyUrl({ url: '', query: params })
 
   function setPageNumber(pageNumber: number) {
