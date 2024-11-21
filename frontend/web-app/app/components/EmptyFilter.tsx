@@ -32,7 +32,7 @@ export default function EmptyFilter({
             showReset && (<Button outline onClick={reset}>Remove Filters</Button>)
           }
           {
-            showLogin && (<Button outline onClick={() => signIn('id-server')}>Login</Button>)
+            showLogin && (<Button outline onClick={() => signIn('id-server', {callbackUrl})}>Login</Button>)
           }
         </div>
     </div>
